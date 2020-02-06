@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 public class Main{
+    //Function to print the permutations
     static void printPermutation(List<String []> list){
+        //lenght of main list
         int size = list.size();
         int next = 0;
+        //index array equal to size to keep track of lists
         int indexs[] = new int[size];
+
         for(int i = 0;i < size;i++){
             while(true){
                 for(int j =0;j < size;j++){
@@ -30,23 +34,34 @@ public class Main{
         }
         
     }
-    public static void main(String[] anil) {
+    //Driver function
+    public static void main(String[] args) {
        
-        String csvFile = anil[0];
+        //Argument from command line
+        String csvFile = args[0];
         String lineSep  = "";
         String csvSplit = ",";
+
+        //List to keep arrays of Strings
         List<String[]> mainList = new ArrayList<String[]>();
+
+
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
+            //linesep is a single line from csv
             while ((lineSep = br.readLine()) != null) {
 
-                // use comma as separator
+                // use comma as separator ,returns String array
                 String temp[] = lineSep.split(csvSplit);
+
+                //Loop to remove ' ' around chars
                 for(int i =0;i < temp.length ;i++){
                     temp[i] = Character.toString(temp[i].charAt(1));
                 }
+                //Adding to main list
                 mainList.add(temp);
             }
+            //calling function 
             printPermutation(mainList);
             System.out.println();
         } catch (IOException e) {
