@@ -30,7 +30,6 @@ public class Main{
         }
         
     }
-
     public static void main(String[] anil) {
        
         String csvFile = anil[0];
